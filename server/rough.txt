@@ -1,0 +1,61 @@
+  "proxy": "http://localhost:5000",
+
+router.post('/epdata',(req,res) => {
+    const {name,email,phone,profession,amount,equity,category,income,profit,password,govtId}=req.body;
+
+    if(!name || !email || !phone || !profession || !amount || !equity || !category || ! income || !profit || !password || !govtId){
+        return res.status(422).json({error: "Field left empty"});
+    }
+
+    Ep.findOne({email:email})
+    .then((userExists) => {
+        if(userExists){
+            return res.status(422).json({error: "User already exists"});
+        }
+        
+        const ep=new Ep({name,email,phone,profession,amount,equity,category,income,profit,password,govtId});
+        
+        console.log('before save');
+        ep.save()
+        .then(() => {
+            console.log('inside then');
+            res.status(201).json({message: "Registered successfully"});
+        }).catch((err) => {
+            console.log('inside catch');
+            res.status(500).json({error: "Failed to Registered"})
+        })
+    }).catch((err) => {
+        console.log(err);
+    })
+});
+
+
+router.post('/sharkdata',(req,res) => {
+    const {name,email,phone,profession,income,password,govtId}=req.body;
+
+    if(!name || !email || !phone || !profession ||! income || !password || !govtId){
+        return res.status(422).json({error: "Field left empty"});
+    }
+
+    Shark.findOne({email:email})
+    .then((userExists) => {
+        if(userExists){
+            return res.status(422).json({error: "User already exists"});
+        }
+        
+        const shark=new Shark({name,email,phone,profession,income,password,govtId});
+        
+        console.log('before save');
+        shark.save()
+        .then(() => {
+            console.log('inside then');
+            res.status(201).json({message: "Registered successfully"});
+        }).catch((err) => {
+            console.log('inside catch');
+            console.log(err);
+            res.status(500).json({error: "Failed to Registered"})
+        })
+    }).catch((err) => {
+        console.log(err);
+    })
+});
