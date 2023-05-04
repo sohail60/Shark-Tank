@@ -1,0 +1,31 @@
+:root{
+    --success-color: #2ecc71;
+    --error-color: #e74c3c;
+}
+
+.form-control{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid red;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+}
+
+.form-control.success input{
+    border-color: var(--success-color);
+}
+
+.form-control.error input{
+    border-color: var(--error-color);
+}
+
+.form-control small{
+    color: var(--error-color);
+    visibility: hidden;
+}
+
+.form-control.error small{
+    visibility: visible;
+}

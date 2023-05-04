@@ -1,0 +1,258 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*-----------------Nabbar---------------------------*/
+
+
+.navbar{
+  box-shadow: 0px 2px 200px #756f6f, 0px -10px 5px #100f0f;
+}
+
+/* -------------------------------Home Page--------------------------------  */
+.hmain{
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  /* background-image: url("../public/images/pexels-andrea-piacquadio-3785419.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; */
+}
+
+.hsec_1{
+ width: 50%;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+
+.hsec_1 .btns{
+  margin-top: 5rem;
+}
+.hsec_1 .btns .btn{
+  margin-right: 2rem;
+  border-radius: 5rem;
+  text-decoration: none;
+}
+.btnlink{
+  text-decoration: none;
+  /* color: whitesmoke; */
+}
+
+
+
+.homeimg{
+  height: 40rem;
+}
+
+
+/* --------------------------------------------------SHarks Login -------------------------- */
+.logindiv{
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slogin{
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 2px 2px 5px blue;
+  border-radius: 10px;
+  padding: 1rem;
+}
+.slogin .left{
+  display: flex;
+  flex-direction: column;
+}
+
+.left img{
+  height: 20rem;
+}
+
+.right form div{
+  margin-bottom: 1rem;
+  /* background-color: red; */
+}
+.right form div input{
+  outline: none;
+  border: none;
+  border-bottom: 1px solid rgb(3, 3, 3);
+}
+
+
+/*--------------------- Sharks SignUp----------------- */
+.signupmaindiv{
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sharkregister{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  padding: 1rem;
+  border-radius: 10px;
+  /* background-color: red; */
+  box-shadow: 2px 2px 10px blue;
+}
+.sharkregister .left{
+  display: flex;
+  flex-direction: column;
+  margin-right: 1rem;
+}
+.epregistermaindiv .left .input_div,.sharkregister .left .input_div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.epregistermaindiv .left .input_div input, .sharkregister .left .input_div input{
+  outline: none;
+  border: none;
+  border-bottom: 1px solid rgb(3, 3, 3);
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+.sharkregister .left .leftbtn{
+  margin-top: 1rem;
+}
+
+.sharkregister .right{
+  display: flex;
+  flex-direction: column;
+}
+.signupmaindiv .right img{
+  height: 36rem;
+  width: 25rem;
+}
+
+
+/* --------------------Sharks Section  */
+
+.sharksmaindiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem 2rem;
+}
+
+.sharkscards{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.sharksmaindiv .card{
+  /* width:20%; */
+  /* height: 70vh; */
+  margin: 1rem 1rem;
+
+}
+.sharksmaindiv .card img{
+  height: 22rem;
+}
+.sharksmaindiv .card .sharksimg{
+  /* height: 40%; */
+}
+.sharksmaindiv .card .sharksdetails{
+  margin-left: 1rem;
+  margin-top: 1%;
+  /* height: 60%; */
+
+}
+
+
+/*--------------------------------------- Ep Signup Section----------------------------------  */
+.epregistermaindiv{
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.epsharkregister{
+  /* padding: 1rem 1rem; */
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  /* background-color: red; */
+  box-shadow: 2px 2px 10px blue;
+  border-radius: 1rem;
+}
+
+.epsharkregister .left form{
+  /* padding: 1rem 1rem; */
+  display: flex; 
+}
+.epsharkregister .left form .form_right{
+  margin-left: 1rem;
+  /* background-color: red; */
+
+}
+.epsharkregister .right{
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+}
+.epsharkregister .right img{
+  height: 29rem;
+  width: 25rem;
+}
+
+
+
+
+
+/* // X-Small devices (portrait phones, less than 576px) */
+/* // No media query for `xs` since this is the default in Bootstrap */
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (max-width: 767px) {
+
+  .sharkscards{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .sharkscards{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .sharkscards{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+ }
+
+/* // X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { }
+
+/* // XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) { }
