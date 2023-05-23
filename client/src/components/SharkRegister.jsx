@@ -34,17 +34,29 @@ const Sharkregister = () => {
     console.log('Shark Register')
     console.log(sharkReg);
 
+    const {name,email,mobileNumber,profession,income,password,confirmpassword,govtId} = sharkReg;
+
     const res= await fetch('/sharkdata',{
       method: "POST",
       crossDomain: true,
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
+        "Accept": "application/json",
         "Access-Control-Allow-Origin": "*",
       },
-      body: JSON.stringify(sharkReg),
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        mobileNumber: mobileNumber,
+        profession: profession,
+        income: income,
+        password: password,
+        confirmpassword: confirmpassword,
+        govtId: govtId,
+      }),
     })
     // "http://localhost:3000/submitShark"
+    
     const data=await res.json();
 
     if(data.status === 422 || !data){

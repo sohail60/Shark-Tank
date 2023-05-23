@@ -20,17 +20,17 @@ const Login = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     console.log('Shark Login')
-    console.log(sharkLog);
+    const {email,password}= sharkLog;
 
     const res= await fetch('/sharklog',{
       method: "POST",
-      crossDomain: true,
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
-        "Access-Control-Allow-Origin": "*",
       },
-      body: JSON.stringify(sharkLog),
+      body: JSON.stringify({
+        email:email,
+        password:password
+    }),
     })
     // "http://localhost:3000/submitShark"
     const data=await res.json();

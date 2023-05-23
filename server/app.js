@@ -1,7 +1,7 @@
 const express= require('express');
 const mongoose=require('mongoose');
 const dotenv=require('dotenv');
-// const cors = require('cors');
+const cors = require('cors');
 // const bodyParser=require('body-parser');
 const app=express();
 
@@ -12,9 +12,9 @@ app.use(express.json());
 app.use(require('./router/auth'))
 // app.use(cors());
 
-// app.use(cors({
-//     origin: 'http://localhost:3000'
-//   }));
+app.use(cors({
+    origin: '*'
+  }));
   
 
 // Listening

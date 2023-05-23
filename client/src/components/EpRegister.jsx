@@ -42,12 +42,11 @@ const Epregister = () => {
     console.log(epReg);
 
     const res=await fetch ('/epdata',{
-      // register
       // "http://localhost:3000/submitEp"
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
+        "Accept": "application/json",
         "Access-Control-Allow-Origin": "*",
       },
       crossDomain: true,

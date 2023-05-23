@@ -22,7 +22,7 @@ const EpLogin = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     console.log('Ep Login')
-    console.log(epLog);
+    const {email,password}= epLog;
 
     const res= await fetch('/eplog',{
       method: "POST",
@@ -32,7 +32,10 @@ const EpLogin = () => {
         Accept: "application/json",
         "Access-Control-Allow-Origin": "*",
       },
-      body: JSON.stringify(epLog),
+      body: JSON.stringify({
+        email:email,
+        password:password
+    }),
     })
     // "http://localhost:3000/submitShark"
     const data=await res.json();

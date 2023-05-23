@@ -1,61 +1,60 @@
 const express = require("express");
 const router = express.Router();
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 require("../db/conn");
 const Shark = require("../model/sharkSchema");
 const Ep = require("../model/epSchema");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+const authenticate= require('../middleware/authenticate')
 // const app=express();
 // const cors = require('cors');
 // app.use(cors());
 
-// Middleware
-const middleware = (req, res, next) => {
-  // console.log("in middleware");
-  next();
-};
 
 // Routes
-router.get("/", middleware, (req, res) => {
-  res.send("Hello!!");
-});
+// router.get("/", (req, res) => {
+//   res.send("Hello!!");
+// });
 
-router.get("/", (req, res) => {
-  res.send("Hello!!");
-});
+// router.get("/", (req, res) => {
+//   res.send("Hello!!");
+// });
 
-router.get("/about", middleware, (req, res) => {
-  console.log("about");
-  res.send("Hello!!");
-});
 
-router.get("/contact", middleware, (req, res) => {
-  res.send("Hello!!");
-});
 
-router.get("/sharkregister", middleware, (req, res) => {
-  res.send("Hello!!");
-});
+// router.get("/contact", (req, res) => {
+//   res.send("Hello!!");
+// });
 
-router.get("/sharklogin", middleware, (req, res) => {
-  res.send("Hello!!");
-});
+// router.get("/sharkregister", (req, res) => {
+//   res.send("Hello!!");
+// });
 
-router.get("/epregister", middleware, (req, res) => {
-  res.send("Hello!!");
-});
+// router.get("/sharklogin", (req, res) => {
+//   res.send("Hello!!");
+// });
 
-router.get("/eplogin", middleware, (req, res) => {
-  res.send("Hello!!");
-});
+// router.get("/epregister", (req, res) => {
+//   res.send("Hello!!");
+// });
 
-router.get("/shark", middleware, (req, res) => {
-  res.send("Hello!!");
-});
+// router.get("/eplogin", (req, res) => {
+//   res.send("Hello!!");
+// });
 
-router.get("/ep", middleware, (req, res) => {
-  res.send("Hello!!");
-});
+// router.get("/shark", (req, res) => {
+//   res.send("Hello!!");
+// });
+
+// router.get("/ep", (req, res) => {
+//   res.send("Hello!!");
+// });
+
+// router.get("/about", authenticate, (req, res) => {
+//   console.log("about");
+//   res.send("Hello!!");
+// });
+
 
 router.post("/sharkdata", async (req, res) => {
   // Collecting data from Frontend
@@ -199,15 +198,17 @@ router.post("/sharklog", async (req, res) => {
 
   // If any of the fields are left empty, then return an error msg with status 422
   if (!email || !password) {
-    return res.status(422).json({ error: "Field left empty" });
+    return res.status(400).json({ error: "Field left empty" });
+    console.log('Field empty');
   }
 
   try {
+    console.log('inside try');
     // If the user doesn't exist, then return an error msg with status 422
     const userLogin = await Shark.findOne({ email: email });
 
     if (!userLogin) {
-      return res.status(422).json({ error: "Invalid Credentails" });
+      return res.status(400).json({ error: "Invalid Credentails" });
     }
 
     // Compare the passwords
@@ -224,7 +225,7 @@ router.post("/sharklog", async (req, res) => {
 
     // If passwords don't match, then return an error msg with status 422
     if (!isMatch) {
-      return res.status(422).json({ error: "Invalid Credentails" });
+      return res.status(400).json({ error: "Invalid Credentails" });
     } else {
       return res.status(201).json({ message: "Login successfully" });
     }
